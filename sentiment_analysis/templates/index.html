@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sentiment Analysis</title>
+    <style>
+        .info h1{
+            align-content: center;
+        }
+
+        .description {
+            font-size: 10px;
+            width: 300px;
+        }
+        .submit-block{
+            width: 300px;
+        }
+        .result-module{
+            font-size: 14px;
+        }
+        .result-module img{
+            height: 22px;
+            align-content: center;
+            padding: 0px;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="info">
+
+    <h1>Sentiment Analysis</h1>
+
+    <p class="description">
+        This sentiment analysis API extracts sentiment in a given string of text. Sentiment analysis, also called 'opinion mining', uses natural language processing, text analysis and computational linguistics to identify and detect subjective information from the input text. This algorithm classifies each sentence in the input as very negative, negative, neutral, positive, or very positive.
+    </p>
+
+    <form action="" method=post>
+        <div class="module-input">
+            <textarea name="sentence" id="" cols="30" rows="20" style="width: 300px;height: 200px">{{ input_sentence }}</textarea>
+        </div>
+
+        <div class="submit-block">
+            <input type=submit value='Submit' style="float:right">
+        </div>
+    </form>
+
+
+    <div class="result-module">
+        {% set emoji = '' %}
+        Sentiment Result:
+        {% if predict_result== 'Positive' %}
+            {% set emoji = 'happy.png' %}
+        {% elif predict_result== 'Negative'  %}
+            {% set emoji = 'unhappy.png' %}
+        {% elif predict_result== 'Neutral'  %}
+            {% set emoji = 'neutral.png' %}
+        {% endif %}
+        {{ predict_result }}
+        <img src="{{ url_for('static',filename='img/'+emoji) }}" alt="">
+
+    </div>
+
+
+</div>
+
+
+
+
+</body>
+</html>
